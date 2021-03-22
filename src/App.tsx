@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Article } from './interfaces';
+import Header from './components/Header';
+import ArticlesList from './components/ArticlesList';
+import Form from './components/Form';
+import { getArticles } from './helpers';
 
 function App() {
+  const articles = getArticles();
+  const [articlesList, setArticlesList] = useState<Article[]>(articles);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header message="Your best Blog (only for you)!" />
+      <section className="container flex flex-col lg:flex-row justify-around m-auto mt-10">
+        <Form
+          addArticle={function (article: Article): void {
+            localStorage.setItem('articles', JSON.stringify([article, ...articlesList]));
+            return setArticlesList([article, ...articlesList]);
+          }}
+        />
+        <ArticlesList articles={articlesList} setArticles={setArticlesList} />
+      </section>
     </div>
   );
 }
