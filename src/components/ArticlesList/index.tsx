@@ -1,16 +1,14 @@
-import { Article } from '../../interfaces';
+import { useContext } from 'react';
+import { ArticlesContext } from '../../App';
 import ArticleCard from './Article';
 
-interface Props {
-  articles: Article[];
-  setArticles: React.Dispatch<React.SetStateAction<Article[]>>;
-}
+function ArticlesList() {
+  const { articles } = useContext(ArticlesContext);
 
-function ArticlesList({ articles, setArticles }: Props) {
   return (
     <section className="w-full lg:w-1/2 flex flex-col">
       {articles.map(article => {
-        return <ArticleCard setArticles={setArticles} key={article.id} article={article} />;
+        return <ArticleCard key={article.id} article={article} />;
       })}
     </section>
   );
