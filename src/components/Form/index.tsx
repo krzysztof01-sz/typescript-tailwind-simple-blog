@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Category } from '../../constants';
 import { Article, ArticleFormData } from '../../interfaces';
 import { getMinutesToRead, generateArticleId } from '../../helpers';
+import { ArticlesContext } from '../../App';
 import TextInput from './Input';
 import TextArea from './TextArea';
 import Select from './Select';
@@ -19,13 +20,11 @@ class Validator {
   }
 }
 
-interface Props {
-  addArticle: (article: Article) => void;
-}
-
-function Form({ addArticle }: Props) {
+function Form() {
   const [article, setArticle] = useState<ArticleFormData>(initialArticleData);
   const [error, setError] = useState<string | undefined>(undefined);
+
+  const { addArticle } = useContext(ArticlesContext);
 
   return (
     <form
