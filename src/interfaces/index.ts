@@ -12,3 +12,15 @@ export interface Article extends ArticleFormData {
     date: Date;
     minutesToRead: number;
 }
+
+export interface ArticleContextSchema {
+  articles: Article[];
+  addArticle: (article: Article) => void;
+  deleteArticle: (idToDelete: number) => void;
+}
+
+export interface InputProps {
+  name: string;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<ArticleFormData>>;
+}
