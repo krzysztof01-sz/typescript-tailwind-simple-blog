@@ -1,12 +1,6 @@
-import { ArticleFormData } from '../../interfaces';
+import { ArticleFormData, InputProps } from '../../interfaces';
 
-interface Props {
-  name: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<ArticleFormData>>;
-}
-
-const TextInput = ({ name, value, setValue }: Props) => {
+function TextInput({ name, value, setValue }: InputProps) {
   return (
     <>
       <label htmlFor={name}>{name}</label>
@@ -22,6 +16,6 @@ const TextInput = ({ name, value, setValue }: Props) => {
       <br />
     </>
   );
-};
+}
 
 export default TextInput;

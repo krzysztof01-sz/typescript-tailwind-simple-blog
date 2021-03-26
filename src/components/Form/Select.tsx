@@ -1,13 +1,10 @@
-import { ArticleFormData } from '../../interfaces';
+import { ArticleFormData, InputProps } from '../../interfaces';
 
-interface Props {
-  name: string;
-  value: string;
+interface Props extends InputProps {
   options: object;
-  setValue: React.Dispatch<React.SetStateAction<ArticleFormData>>;
 }
 
-const Select = ({ name, value, options, setValue }: Props) => {
+function Select({ name, value, options, setValue }: Props) {
   return (
     <>
       <label htmlFor={name}>{name}</label>
@@ -30,6 +27,6 @@ const Select = ({ name, value, options, setValue }: Props) => {
       <br />
     </>
   );
-};
+}
 
 export default Select;

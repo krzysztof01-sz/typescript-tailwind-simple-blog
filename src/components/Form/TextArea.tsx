@@ -1,12 +1,6 @@
-import { ArticleFormData } from '../../interfaces';
+import { ArticleFormData, InputProps } from '../../interfaces';
 
-interface Props {
-  name: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<ArticleFormData>>;
-}
-
-const TextArea = ({ name, value, setValue }: Props) => {
+function TextArea({ name, value, setValue }: InputProps) {
   return (
     <>
       <label htmlFor={name}>{name}</label>
@@ -21,6 +15,6 @@ const TextArea = ({ name, value, setValue }: Props) => {
       <br />
     </>
   );
-};
+}
 
 export default TextArea;
